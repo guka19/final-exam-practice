@@ -1,0 +1,47 @@
+header {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px 5px;
+
+    .title {
+        font-size: 1.5rem;
+        cursor: pointer;
+        text-decoration: none;
+        color: black;
+    }
+
+    nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        ul {
+            display: flex;
+            gap: 30px;
+            list-style-type: none;
+
+            li {
+
+                a {
+                    text-decoration: none;
+                    color: black;
+                    font-size: 1.8rem;
+                    padding: 10px;
+
+                    &:hover {
+                        background-color: black;
+                        border-radius: 20px;
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10rem 20rem;
+}

@@ -1,12 +1,12 @@
     <table>
         <thead>
-            <th>Title</th>
-            <th>Create Date</th>
-            <th>Edit</th>
+            <th>{{ "TITLE"  | translate }}</th>
+            <th>{{ "CREATE-DATE"  | translate }}</th>
+            <th>{{ "EDIT"  | translate }}</th>
         </thead>
         <tr *ngFor="let note of notes" [ngClass]="{'important': note.isImportant}">
             <td>{{ note.title.length > 10 ? (note.title | slice:0:7) + '...' : note.title }}</td>
             <td>{{note.createDate | date: 'dd-MM-yyyy' }}</td>
-            <td> <p-button label="Edit Note" routerLink="/my-notes/{{note.id}}/edit-note"></p-button> </td>
+            <td> <p-button [label]=" 'EDIT-NOTE' | translate " routerLink="/my-notes/{{note.id}}/edit-note"></p-button> </td>
         </tr>
     </table>    

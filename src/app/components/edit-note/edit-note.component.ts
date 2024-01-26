@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Note } from 'src/app/shared/models/note';
 import { NoteService } from 'src/app/shared/services/note.service';
 
@@ -17,19 +18,27 @@ export class EditNoteComponent implements OnInit  {
   errorMsg!: string | null;
 
   editForm = this.fb.group({
-    title: [this.note?.title, [Validators.required]],
+    title: ["", [Validators.required]],
     content: ["", [Validators.required]],
     isImportant: [false]
   })
 
   ngOnInit(): void {
     this.noteId = this.route.snapshot.paramMap.get("id");
+  
     if (this.noteId) {
       this.noteService.getNote(this.noteId).subscribe(data => {
         this.note = data;
-      })
+  
+        this.editForm.setValue({
+          title: this.note.title || '', 
+          content: this.note.content || '', 
+          isImportant: this.note.isImportant || false
+        });
+      });
     }
   }
+  
 
   editNote(note: Note) {
     
@@ -52,6 +61,9 @@ export class EditNoteComponent implements OnInit  {
       }
     }
 
-  constructor(private route: ActivatedRoute, private noteService: NoteService, private fb: FormBuilder, private router: Router) {}
+  constructor(private route: ActivatedRoute, private noteService: NoteService, private fb: FormBuilder, private router: Router, private translate: TranslateService) {
+    translate.setDefaultLang('en');
+    translate.use('en');
+  }
 
 }

@@ -5,10 +5,13 @@
     <nav>
         <ul>
             <li>
-                <a routerLink="/home">{{navIems[0]}}</a>
+                <a routerLink="/home">{{ "HOME" | translate }}</a>
             </li>
             <li>
-                <a routerLink="/my-notes">{{navIems[1]}}</a>
+                <a routerLink="/my-notes">{{ "NOTES" | translate }}</a>
+            </li>
+            <li>
+                <p-button icon="pi pi-language" (click)="switchLanguage()"></p-button>
             </li>
         </ul>
     </nav>

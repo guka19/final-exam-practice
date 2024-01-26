@@ -4,25 +4,25 @@
                 <span class="p-inputgroup-addon">
                     <i class="pi pi-file-edit"></i>
                 </span>
-                <input pInputText placeholder="New Title" formControlName="title" [value]="note.title"/>
+                <input pInputText [placeholder]=" 'NEW-TITLE' | translate " formControlName="title" [value]="note.title" [defaultValue]="note.title"/>
         </div>
         <div class="p-inputgroup">
                 <span class="p-inputgroup-addon">
                     <i class="pi pi-info-circle"></i>
                 </span>
-                <textarea rows="5" cols="30" pInputTextarea placeholder="New Content" formControlName="content"></textarea>
+                <textarea rows="5" cols="30" pInputTextarea [placeholder]=" 'NEW-CONTENT' | translate "  formControlName="content"></textarea>
         </div>
         <div class="p-inputgroup">
                 <span style="margin-right: 10px;">
                     <i class="pi pi-flag-fill"></i>
-                    Is Important?
+                    {{ 'IMPORTANT' | translate }}
                 </span>
                 <p-checkbox [binary]="true" inputId="binary" formControlName="isImportant"></p-checkbox>
         </div>
         <p style="color: red;"> {{errorMsg}} </p>
         <div class="buttons" style="display: flex; justify-content: center; align-items: center; gap: 10px;">
-            <p-button label="Save" (click)="editNote(note)"></p-button> 
-            <p-button label="Cancel Editing" [text]="true" routerLink="/my-notes"></p-button> 
+            <p-button [label]="  'SAVE' | translate  " (click)="editNote(note)"></p-button> 
+            <p-button [label]="  'CANCEL' | translate  " [text]="true" routerLink="/my-notes"></p-button> 
         </div>
     </form>
 </div>

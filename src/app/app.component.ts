@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -6,8 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  
   title = 'Notes App';
 
-  navIems = ["Home", "My-Notes"];
+  constructor(private translate: TranslateService) {
+    translate.setDefaultLang('en');
+    translate.use('en');
+  }
+
+  switchLanguage() {
+    const currentLang = this.translate.currentLang;
+    const newLang = currentLang === 'en' ? 'ge' : 'en';
+    this.translate.use(newLang);
+  }
 
 }

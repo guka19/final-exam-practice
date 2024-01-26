@@ -13,7 +13,7 @@ import { NoteService } from 'src/app/shared/services/note.service';
 })
 export class EditNoteComponent implements OnInit  {
 
-  noteId!: string | null;
+  noteId!: number | null;
   note!: Note;
   errorMsg!: string | null;
 
@@ -24,8 +24,10 @@ export class EditNoteComponent implements OnInit  {
   })
 
   ngOnInit(): void {
-    this.noteId = this.route.snapshot.paramMap.get("id");
-  
+    this.route.paramMap.subscribe(c => {
+      this.noteId = +c.get('id')!;
+    })
+    
     if (this.noteId) {
       this.noteService.getNote(this.noteId).subscribe(data => {
         this.note = data;

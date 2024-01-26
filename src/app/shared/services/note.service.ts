@@ -14,7 +14,7 @@ export class NoteService {
     return this.http.get<Note[]>(this.apiUrl);
   }
 
-  getNote(noteId: string): Observable<Note> {
+  getNote(noteId: number): Observable<Note> {
     return this.http.get<Note>(`${this.apiUrl}/${noteId}`);
   }
 

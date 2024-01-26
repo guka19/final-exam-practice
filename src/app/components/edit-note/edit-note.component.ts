@@ -26,19 +26,19 @@ export class EditNoteComponent implements OnInit  {
   ngOnInit(): void {
     this.route.paramMap.subscribe(c => {
       this.noteId = +c.get('id')!;
-    })
+
+      if (this.noteId) {
+        this.noteService.getNote(this.noteId).subscribe(data => {
+          this.note = data;
     
-    if (this.noteId) {
-      this.noteService.getNote(this.noteId).subscribe(data => {
-        this.note = data;
-  
-        this.editForm.setValue({
-          title: this.note.title || '', 
-          content: this.note.content || '', 
-          isImportant: this.note.isImportant || false
+          this.editForm.setValue({
+            title: this.note.title || '', 
+            content: this.note.content || '', 
+            isImportant: this.note.isImportant || false
+          });
         });
-      });
-    }
+      }
+    })
   }
   
 

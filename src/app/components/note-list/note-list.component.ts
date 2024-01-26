@@ -12,11 +12,7 @@ export class NoteListComponent {
 
   notes: Note[] = [];
 
-  constructor(private noteService: NoteService, private translate: TranslateService) {
-
-    translate.setDefaultLang('en');
-    translate.use('en');
-
+  constructor(private noteService: NoteService) {
     this.noteService.getNotes().subscribe(data => {
       this.notes = data;
     })

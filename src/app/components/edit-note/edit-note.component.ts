@@ -63,9 +63,7 @@ export class EditNoteComponent implements OnInit  {
       }
     }
 
-  constructor(private route: ActivatedRoute, private noteService: NoteService, private fb: FormBuilder, private router: Router, private translate: TranslateService) {
-    translate.setDefaultLang('en');
-    translate.use('en');
+  constructor(private route: ActivatedRoute, private noteService: NoteService, private fb: FormBuilder, private router: Router) {
   }
 
 }
